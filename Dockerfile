@@ -19,8 +19,8 @@ ENV DISABLE_SPRING="true" \
     BUNDLE_FROZEN=1 \
     BUNDLE_JOBS=5 \
     TZ=:/etc/localtime \
-    LD_LIBRARY_PATH=/opt/oracle/instantclient_12_2/ \
-    ORACLE_HOME=/opt/oracle/instantclient_12_2/ \
+    LD_LIBRARY_PATH=/opt/oracle/instantclient/ \
+    ORACLE_HOME=/opt/oracle/instantclient/ \
     DB=$DB \
     SAFETY_ASSURED=1 \
     UNICORN_WORKERS=2
@@ -34,12 +34,19 @@ ADD config/oracle/odbc*.ini /etc/
 
 # Oracle special, this needs Oracle to be present in vendor/oracle
 ADD vendor/oracle/* /opt/oracle/
-RUN if [ "${DB}" = "oracle" ]; then unzip /opt/oracle/instantclient-basiclite-linux.x64-12.2.0.1.0.zip -d /opt/oracle/ \
- && unzip /opt/oracle/instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /opt/oracle/ \
- && unzip /opt/oracle/instantclient-odbc-linux.x64-12.2.0.1.0-2.zip -d /opt/oracle/ \
- && (cd /opt/oracle/instantclient_12_2/ && ln -s libclntsh.so.12.1 libclntsh.so) \
- && rm -rf /opt/system/vendor/oracle \
- && rm -rf /opt/oracle/*.zip; fi
+RUN if [ "${DB}" = "oracle" ]; \
+    then \
+        declare oracle_otn=https://download.oracle.com/otn_software/linux/instantclient/19600; \
+        declare oracle_version=linux.x64-19.6.0.0.0dbru; \
+        declare -a packages=(instantclient-basiclite instantclient-sdk instantclient-odbc); \
+        for package in "${packages[@]}"; do \
+             zip=${package}-${oracle_version}.zip; \
+             wget "${oracle_otn}/${zip}" -O "vendor/oracle/${zip}" \
+             && unzip "vendor/oracle/${zip}" -d /opt/oracle \
+             && rm -rf "vendor/oracle/${zip}"
+        done; \
+        ln -sf /opt/oracle/instantclient_19_6 /opt/oracle/instantclient
+    fi;
 
 USER root
 

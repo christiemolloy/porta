@@ -204,8 +204,8 @@ commands: # reusable commands with parameters
             done
 
             # hack for system-builder ENV
-            sudo ln -s /opt/oracle/instantclient_19_6/ /opt/oracle/instantclient_12_2
             sudo rm -rf /opt/system/vendor/oracle
+            sudo ln -sf /opt/oracle/instantclient_19_6 /opt/oracle/instantclient
             rm -rf vendor/oracle/*.zip
             sudo cp config/oracle/*.ini /etc/
 
