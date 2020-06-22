@@ -7,9 +7,9 @@ class Fields::FieldsTest < ActiveSupport::TestCase
 
     set_fields_source :self
 
-    def self.columns
-      []
-    end
+    # def self.columns
+    #   []
+    # end
 
     attr_reader :provider_account
 
