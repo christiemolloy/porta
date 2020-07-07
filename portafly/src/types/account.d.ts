@@ -1,8 +1,18 @@
 export interface IDeveloperAccount extends IAccount {
   adminName: string
   createdAt: string // TODO: Find a specific date as string type
-  state: string
+  state: State
   updatedAt: string
+}
+
+export interface IAccountOverview extends IDeveloperAccount {
+  publicDomain: string
+  adminDomain: string
+  applications: any[]
+  planName: string
+  adminEmail: string
+  state: State
+  // TODO: everything needed in the Overview page
 }
 
 export interface IAccount {

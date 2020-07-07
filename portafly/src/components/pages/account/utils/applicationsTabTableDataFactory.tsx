@@ -1,24 +1,24 @@
 import React from 'react'
 import { sortable } from '@patternfly/react-table'
-import { DataListRowGenerator, DataListColumnGenerator, IProductApplication } from 'types'
+import { DataListRowGenerator, DataListColumnGenerator, IAccountApplication } from 'types'
 import { TFunction } from 'i18next'
 import {
   ApplicationPageLink,
   PlanOverviewLink,
-  AccountOverviewLink,
-  StateLabel
+  StateLabel,
+  ProductLink
 } from 'components'
 
-const generateRows: DataListRowGenerator = (applications: IProductApplication[]) => {
+const generateRows: DataListRowGenerator = (applications: IAccountApplication[]) => {
   // Rows and Columns must have the same order
-  const mapAccountToRowCell = (application: IProductApplication) => [
+  const mapAccountToRowCell = (application: IAccountApplication) => [
     {
       stringValue: application.name,
       title: <ApplicationPageLink application={application} />
     },
     {
-      stringValue: application.account.orgName,
-      title: <AccountOverviewLink account={application.account} />
+      stringValue: application.product.name,
+      title: <ProductLink product={application.product} />
     },
     {
       stringValue: application.plan.name,
@@ -46,8 +46,8 @@ const generateColumns: DataListColumnGenerator = (t: TFunction) => [
     transforms: [sortable]
   },
   {
-    categoryName: 'account',
-    title: t('applicationsIndex:applications_table.account_header'),
+    categoryName: 'product',
+    title: t('applicationsIndex:applications_table.product_header'), // FIXME: add this to strings file
     transforms: [sortable]
   },
   {
