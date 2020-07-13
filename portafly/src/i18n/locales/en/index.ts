@@ -6,6 +6,8 @@ import overview from 'i18n/locales/en/overview.yml'
 import login from 'i18n/locales/en/login.yml'
 // Audience
 import accountsIndex from 'i18n/locales/en/audience/accounts/listing.yml'
+// Products
+import productOverview from 'i18n/locales/en/products/overview.yml'
 // Applications
 import applicationsIndex from 'i18n/locales/en/applications/listing.yml'
 import applicationsPlans from 'i18n/locales/en/applications/applications_plans.yml'
@@ -43,6 +45,7 @@ export {
   applicationsPlans,
   applicationsIndex,
   accountsIndex,
+  productOverview,
   shared,
   overview,
   analytics,

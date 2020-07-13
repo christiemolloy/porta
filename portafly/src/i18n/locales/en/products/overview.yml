@@ -1,0 +1,18 @@
+system_name: System name
+description: Description
+edit_link:
+  title: Edit API product
+  aria_label: Edit API product
+delete_button:
+  title: Delete API product
+  aria_label: Delete API product
+delete_modal:
+  title: Confirm {{product}} deletion
+  body: Deleting this API product <strong>irreversibly destroys</strong> all applications, applications plans, metrics pricing rules, features, service plans and subscriptions. Upon deletion, all authorization and reporting calls from this API product will no longer be valid.
+  input_label: Type <strong>{{product}}</strong> to confirm
+  input_aria_label: Type this product system-name
+  button_delete: Delete
+  button_delete_aria_label: Confirm delete
+  button_cancel: Cancel
+  button_cancel_aria_label: Cancel delete
+  alert_success: Product successfully marked for deletion
