@@ -14,7 +14,7 @@
       $('input#cinstance_plan_id').val(planID);
     }
 
-    $("#<%= id %>").click(function(){
+    $("#<%= id %>").on('click', function(){
       <%- if contract.new_record? %>
         var planID = $('input#cinstance_plan_id').val();
         PlanWidget.loadPreview(planID, updateForm, '<%= admin_service_plans_widget_path(@service) %>');
