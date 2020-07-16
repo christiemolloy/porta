@@ -1,4 +1,5 @@
 //= require highlight/highlight.pack
+//= require vendor/colorbox/jquery.colorbox-min
 //= require vendor/rails
 //= require help
 //= require flash-buyer

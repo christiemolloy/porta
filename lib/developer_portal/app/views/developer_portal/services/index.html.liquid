@@ -41,7 +41,7 @@
                             {% if subscription.can.change_plan? %}
                                <a href="#" id="choose-plan-{{subscription.id}}" class="btn btn-default">Review/Change</a>
 
-                               {{ "plans_widget.js" | javascript_include_tag }}
+                               {{ "plans_widget_v2.js" | javascript_include_tag }}
                                {{ "plans_widget.css" | stylesheet_link_tag }}
 
                                 <script type="text/javascript">

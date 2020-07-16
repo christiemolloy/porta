@@ -2,6 +2,7 @@
   var container = $("#application_keys");
 
   <% if @key.persisted? -%>
+    if($.colorbox) { $.colorbox.close(); }
 
     var keys = container.find("table#keys tbody");
     var key = <%= render_to_js_string('key', :cinstance => @cinstance, :key => @key) %>;
@@ -11,6 +12,7 @@
     $("#invalid-key-warning").text('<%= flash[:error] %>');
     $("#invalid-key-warning").show();
 
+    if($.colorbox){ $.colorbox.resize(); }
   <% end -%>
 
   <% unless @cinstance.application_keys.can_add? %>
