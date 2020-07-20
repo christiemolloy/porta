@@ -104,10 +104,10 @@ div id="cms-toolbar"
         $('body', doc.document || doc).append(added_style);
       };
 
-      $('iframe#developer-portal').on('load', add_style_to_iframe);
+      $('iframe#developer-portal').load(add_style_to_iframe);
       $('#theme-picker')
-              .on('change', add_style_to_iframe)
-              .on('change', function () {
+              .change(add_style_to_iframe)
+              .change(function () {
                 var picker = $(this);
 
                 var snippet = picker.find('option:selected').data('snippet');
