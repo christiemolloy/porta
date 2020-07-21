@@ -43,3 +43,7 @@ $ ->
       save_toolbar_state('visible')
     else
       save_toolbar_state('hidden')
+
+
+
+

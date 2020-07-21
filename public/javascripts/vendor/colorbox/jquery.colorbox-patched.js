@@ -1,7 +1,8 @@
 /*
   This file is a patched version of Colorbox 1.6.3,
-  as it doesn't support jQuery 3.x we manually replaced deprectaed methods 
+  as it doesn't support jQuery 3.x we manually replaced deprecated methods 
   as .live(), .bind(), .unbind(), etc.
+  See: https://api.jquery.com/category/deprecated/
 */
 
 /*!
