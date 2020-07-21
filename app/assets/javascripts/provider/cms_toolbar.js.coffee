@@ -1,4 +1,4 @@
-#= require 'vendor/jquery-3.5.0.min.js'
+#= require 'vendor/jquery-1.10.2.min.js'
 #= require 'vendor/jquery/extensions/jquery.cookie.js'
 
 $ ->
@@ -7,11 +7,11 @@ $ ->
   toolbarMode = $("form#cms-toolbar-mode")
 
 
-  toolbarMode.find('li').on 'click', ->
+  toolbarMode.find('li').click ->
     $(this).closest("li").find("input").attr "checked", true
     $(toolbarMode).trigger "change"
 
-  toolbarMode.on 'change', ->
+  toolbarMode.change ->
     window.location = $(this).find("input:checked").val()
 
   enableAnimation = ->
@@ -28,14 +28,14 @@ $ ->
   save_toolbar_state = (state) ->
     $.cookie('cms-toolbar-state', state, { expires: 30, path: '/' })
 
-  iframe.on 'load', ->
+  iframe.load ->
     if stored_toolbar_state() != 'hidden'
       toggleValues()
       (window.requestAnimationFrame || window.setTimeout)(enableAnimation)
     else
       enableAnimation()
 
-  $("#hide-side-bar").on 'click', (event)->
+  $("#hide-side-bar").click (event)->
     event.preventDefault()
     toggleValues()
 
@@ -43,7 +43,3 @@ $ ->
       save_toolbar_state('visible')
     else
       save_toolbar_state('hidden')
-
-
-
-
