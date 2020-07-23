@@ -101,7 +101,7 @@ class Buyers::AccountsControllerTest < ActionDispatch::IntegrationTest
       post admin_buyers_account_invoices_path(buyer)
       assert_response :forbidden
 
-      invoice = FactoryBot.create(:invoice, buyer_account: buyer, :provider_account: provider)
+      invoice = FactoryBot.create(:invoice, buyer_account: buyer, provider_account: provider)
       get edit_admin_buyers_account_invoice_path(buyer, invoice)
       assert_response :forbidden
     end
