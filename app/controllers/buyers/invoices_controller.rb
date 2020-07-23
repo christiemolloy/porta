@@ -4,6 +4,7 @@ class Buyers::InvoicesController < Buyers::BaseController
 
   helper_method :allow_edit?
 
+  before_action :authorize_finance
   before_action :find_account
   activate_menu :audience, :accounts, :listing
 
@@ -46,6 +47,10 @@ class Buyers::InvoicesController < Buyers::BaseController
   end
 
   private
+  def authorize_finance
+    authorize! :manage, :finance
+  end
+
   def find_account
     @account = current_account.buyers.find(params[:account_id])
   end
