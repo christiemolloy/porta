@@ -2,6 +2,7 @@
 
 import React, {useState} from 'react'
 import {
+  Form,
   Level,
   LevelItem,
   InputGroup,
@@ -148,12 +149,15 @@ const BackendsIndexPage = (props: Props) => {
         <Toolbar id="top-toolbar" className="pf-c-toolbar">
           <div className="pf-c-toolbar__content">
             <ToolbarItem>
-              <InputGroup className="api-table-search">
-                <TextInput placeholder="Find a Backend" name="findBackend" id="findProduct" type="search" aria-label="Find a product" />
-                <Button variant={ButtonVariant.control} aria-label="search button for search input">
-                  <SearchIcon />
-                </Button>
-              </InputGroup>
+              <Form id="new_search" action="/p/admin/backend_apis" accept-charset="UTF-8" method="get">
+                <InputGroup className="api-table-search">
+                  <TextInput name="utf8" type="hidden" value="✓" />
+                  <TextInput placeholder="Find a Backend" name="search[query]" id="findProduct" type="search" aria-label="Find a product" />
+                  <Button variant={ButtonVariant.control} aria-label="search button for search input">
+                    <SearchIcon />
+                  </Button>
+                </InputGroup>
+              </Form>
             </ToolbarItem>
             <ToolbarItem className="api-toolbar-pagination" align={{ default: 'alignRight' }}>
               <Pagination
